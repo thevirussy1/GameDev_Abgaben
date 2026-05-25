@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://car6lgnxkhpu4"]
+
+[ext_resource type="PackedScene" uid="uid://b53k86texiypr" path="res://Abgaben/Aufgabe_3b/Collectible.tscn" id="2_coin"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1"]
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_1"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_1")
+
+[node name="Main" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_1")
+format = 2
+layer_0/tile_data = PackedInt32Array(327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0)
+
+[node name="Coins" type="Node2D" parent="."]
+
+[node name="Collectible1" parent="Coins" instance=ExtResource("2_coin")]
+position = Vector2(200, 200)
+
+[node name="Collectible2" parent="Coins" instance=ExtResource("2_coin")]
+position = Vector2(400, 150)
+
+[node name="Collectible3" parent="Coins" instance=ExtResource("2_coin")]
+position = Vector2(600, 250)
+
+[node name="Collectible4" parent="Coins" instance=ExtResource("2_coin")]
+position = Vector2(300, 400)

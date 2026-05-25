@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvo2bpiaue3sj"]
+
+[ext_resource type="Script" uid="uid://dir24fjjopa0g" path="res://Abgaben/Aufgabe_4c/TetrisGame.gd" id="1_script"]
+
+[node name="TetrisGame" type="Node2D"]
+script = ExtResource("1_script")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(160, 320)
+zoom = Vector2(0.9, 0.9)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 160.0
+offset_bottom = 50.0
+theme_override_font_sizes/font_size = 32
+text = "Score: 0"
+
+[node name="GameOverLabel" type="Label" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -60.0
+offset_right = 200.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+text = "GAME OVER
+(Enter)"
+horizontal_alignment = 1

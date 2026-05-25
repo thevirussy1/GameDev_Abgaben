@@ -1,0 +1,117 @@
+[gd_scene load_steps=12 format=3 uid="uid://byhechwujp8er"]
+
+[ext_resource type="Script" uid="uid://brd0y62ekg38i" path="res://Abgaben/Aufgabe_6a/Main_6a.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://caibqd1tem2e6" path="res://Abgaben/Aufgabe_6a/Player2D.tscn" id="2_player"]
+[ext_resource type="Texture2D" uid="uid://dtymj0v33h1tu" path="res://Abgaben/Aufgabe_3b/assets/tileset.png" id="4_tiles"]
+[ext_resource type="PackedScene" uid="uid://bpushbox001" path="res://Abgaben/Aufgabe_6a/PushableBox.tscn" id="5_box"]
+[ext_resource type="PackedScene" path="res://Abgaben/Aufgabe_6a/Spawner.tscn" id="6_spawner"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_1"]
+vertices = PackedVector2Array(0, 0, 480, 0, 480, 720, 0, 720, 160, 425, 320, 425, 320, 475, 160, 475)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 480, 0, 480, 720, 0, 720), PackedVector2Array(160, 425, 320, 425, 320, 475, 160, 475)])
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1"]
+texture = ExtResource("4_tiles")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_1"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_1")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
+size = Vector2(480, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2"]
+size = Vector2(20, 720)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3"]
+size = Vector2(150, 40)
+
+[node name="Main6a" type="Node2D"]
+script = ExtResource("1_script")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 480.0
+offset_bottom = 720.0
+color = Color(0.12549, 0.12549, 0.12549, 1)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_1")
+
+[node name="TileMap" type="TileMap" parent="NavigationRegion2D"]
+tile_set = SubResource("TileSet_1")
+format = 2
+layer_0/tile_data = PackedInt32Array(327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0)
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="Top" type="StaticBody2D" parent="Walls"]
+position = Vector2(240, 10)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Top"]
+shape = SubResource("RectangleShape2D_1")
+
+[node name="Bottom" type="StaticBody2D" parent="Walls"]
+position = Vector2(240, 710)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Bottom"]
+shape = SubResource("RectangleShape2D_1")
+
+[node name="Left" type="StaticBody2D" parent="Walls"]
+position = Vector2(10, 360)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Left"]
+shape = SubResource("RectangleShape2D_2")
+
+[node name="Right" type="StaticBody2D" parent="Walls"]
+position = Vector2(470, 360)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Right"]
+shape = SubResource("RectangleShape2D_2")
+
+[node name="Obstacle1" type="StaticBody2D" parent="Walls"]
+position = Vector2(240, 450)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Obstacle1"]
+shape = SubResource("RectangleShape2D_3")
+
+[node name="ColorRect" type="ColorRect" parent="Walls/Obstacle1"]
+offset_left = -75.0
+offset_top = -20.0
+offset_right = 75.0
+offset_bottom = 20.0
+color = Color(0.4, 0.4, 0.4, 1)
+
+[node name="Player2D" parent="." instance=ExtResource("2_player")]
+position = Vector2(240, 600)
+
+[node name="PushableBox" parent="." instance=ExtResource("5_box")]
+position = Vector2(240, 300)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="CountdownLabel" type="Label" parent="UI"]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 200.0
+offset_bottom = 46.0
+text = "Nächster Gegner in: 10s"
+
+[node name="Spawner" parent="." instance=ExtResource("6_spawner")]
+position = Vector2(400, 80)
+patrol_points_for_enemies = Array[Vector2]([Vector2(50, 80), Vector2(430, 80)])
+
+[node name="Spawner2" parent="." instance=ExtResource("6_spawner")]
+position = Vector2(80, 600)
+patrol_points_for_enemies = Array[Vector2]([Vector2(50, 600), Vector2(430, 600)])

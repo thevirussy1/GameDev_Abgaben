@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Abgaben/Aufgabe_4a/Spawner.gd" id="1_script"]
+
+[node name="Spawner" type="Node2D" groups=["spawner"]]
+script = ExtResource("1_script")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+modulate = Color(1, 1, 0, 1)
+
+

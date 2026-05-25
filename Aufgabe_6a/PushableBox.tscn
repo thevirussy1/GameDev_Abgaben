@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpushbox001"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bx1"]
+size = Vector2(32, 32)
+
+[node name="PushableBox" type="RigidBody2D"]
+gravity_scale = 0.0
+linear_damp = 5.0
+angular_damp = 5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bx1")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+color = Color(0.6, 0.4, 0.2, 1)
+

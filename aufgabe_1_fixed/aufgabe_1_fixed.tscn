@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dj4huoguqfcem"]
+
+[ext_resource type="Script" uid="uid://51b7sv6ydl3w" path="res://Abgaben/aufgabe_1_fixed/aufgabe_1_fixed.gd" id="1_fixed"]
+
+[node name="Aufgabe1Fixed" type="Node2D"]
+script = ExtResource("1_fixed")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Hello Godot"

@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=3 uid="uid://d2g7hdyv2nomx"]
+
+[ext_resource type="Script" uid="uid://bkonj8oyjoyad" path="res://Abgaben/Aufgabe_6d/Player.gd" id="1_player"]
+[ext_resource type="Script" uid="uid://bno8g53wo4b0k" path="res://Abgaben/Aufgabe_6d/Box.gd" id="2_box"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_player"]
+size = Vector2(40, 40)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_wall_h"]
+size = Vector2(480, 40)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_wall_v"]
+size = Vector2(40, 720)
+
+[node name="DemoAABB" type="Node2D"]
+
+[node name="Player" type="Node2D" parent="." groups=["collidable"]]
+position = Vector2(240, 360)
+script = ExtResource("1_player")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = SubResource("PlaceholderTexture2D_player")
+
+[node name="Box" type="Node2D" parent="." groups=["collidable"]]
+position = Vector2(100, 100)
+script = ExtResource("2_box")
+
+[node name="Sprite2D" type="Sprite2D" parent="Box"]
+texture = SubResource("PlaceholderTexture2D_player")
+
+[node name="WallTop" type="Node2D" parent="." groups=["collidable"]]
+position = Vector2(240, 20)
+
+[node name="Sprite2D" type="Sprite2D" parent="WallTop"]
+modulate = Color(0.5, 0.5, 0.5, 1)
+texture = SubResource("PlaceholderTexture2D_wall_h")
+
+[node name="WallBottom" type="Node2D" parent="." groups=["collidable"]]
+position = Vector2(240, 700)
+
+[node name="Sprite2D" type="Sprite2D" parent="WallBottom"]
+modulate = Color(0.5, 0.5, 0.5, 1)
+texture = SubResource("PlaceholderTexture2D_wall_h")
+
+[node name="WallLeft" type="Node2D" parent="." groups=["collidable"]]
+position = Vector2(20, 360)
+
+[node name="Sprite2D" type="Sprite2D" parent="WallLeft"]
+modulate = Color(0.5, 0.5, 0.5, 1)
+texture = SubResource("PlaceholderTexture2D_wall_v")
+
+[node name="WallRight" type="Node2D" parent="." groups=["collidable"]]
+position = Vector2(460, 360)
+
+[node name="Sprite2D" type="Sprite2D" parent="WallRight"]
+modulate = Color(0.5, 0.5, 0.5, 1)
+texture = SubResource("PlaceholderTexture2D_wall_v")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 430.0
+offset_bottom = 120.0
+text = "AABB Collision System (Ohne Engine-Physik)
+Steuerung: Pfeiltasten (Player = Blau)
+Oranges Rechteck bewegt sich automatisch."

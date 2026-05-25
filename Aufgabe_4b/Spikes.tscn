@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://Abgaben/Aufgabe_4b/Spikes.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://Abgaben/Aufgabe_4b/Plattformer - Assets/World/Props/Objects/Spikes/Spikes.png" id="2_spikes"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
+size = Vector2(32, 16)
+
+[node name="Spikes" type="Area2D"]
+script = ExtResource("1_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_spikes")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_1")
+

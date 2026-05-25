@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://cup3m3586wvs1"]
+
+[ext_resource type="Script" uid="uid://d0emgvxwfottf" path="res://Abgaben/Aufgabe_2a/aufgabe_2.gd" id="1_root"]
+[ext_resource type="Script" uid="uid://dwseqeqc2lqjy" path="res://Abgaben/Aufgabe_2a/clickable_area.gd" id="2_area"]
+[ext_resource type="Texture2D" uid="uid://divg7lcg7mji5" path="res://icon.svg" id="3_icon"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
+size = Vector2(128, 128)
+
+[node name="Aufgabe2" type="Node2D"]
+script = ExtResource("1_root")
+
+[node name="Area1" type="Area2D" parent="."]
+position = Vector2(80, 360)
+script = ExtResource("2_area")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area1"]
+texture = ExtResource("3_icon")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area1"]
+shape = SubResource("RectangleShape2D_1")
+
+[node name="Area2" type="Area2D" parent="."]
+position = Vector2(240, 360)
+script = ExtResource("2_area")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2"]
+texture = ExtResource("3_icon")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2"]
+shape = SubResource("RectangleShape2D_1")
+
+[node name="Area3" type="Area2D" parent="."]
+position = Vector2(400, 360)
+script = ExtResource("2_area")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area3"]
+texture = ExtResource("3_icon")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area3"]
+shape = SubResource("RectangleShape2D_1")
+
+[connection signal="input_event" from="Area1" to="Area1" method="_on_input_event"]
+[connection signal="input_event" from="Area2" to="Area2" method="_on_input_event"]
+[connection signal="input_event" from="Area3" to="Area3" method="_on_input_event"]
